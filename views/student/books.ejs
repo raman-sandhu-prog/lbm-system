@@ -1,0 +1,12 @@
+<h2>Available Books</h2>
+
+<ul>
+  <% books.forEach(book => { %>
+    <li>
+      <%= book.title %> - <%= book.author %>
+      <button>Borrow</button>
+    </li>
+  <% }) %>
+</ul>
+
+<a href="/student">Back</a>

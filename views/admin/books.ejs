@@ -1,0 +1,14 @@
+<h2>Manage Books</h2>
+
+<ul>
+  <% books.forEach(book => { %>
+    <li>
+      <%= book.title %> - <%= book.author %>
+      <form action="/admin/delete/<%= book._id %>" method="POST" style="display:inline;">
+        <button>Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+<a href="/admin">Back</a>
