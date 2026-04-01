@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <% if (!user) { %>
+      <a href="/">Home</a>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+
+    <% } else if (user.role === "student") { %>
+      <a href="/student/dashboard">Dashboard</a>
+      <a href="/student/books">Browse Books</a>
+      <a href="/student/issued-books">My Issued Books</a>
+      <a href="/logout">Logout</a>
+
+    <% } else if (user.role === "admin") { %>
+      <a href="/librarian/dashboard">Dashboard</a>
+      <a href="/librarian/add-book">Add Book</a>
+      <a href="/librarian/manage-books">Manage Books</a>
+      <a href="/librarian/issued-books">Issued Books</a>
+      <a href="/logout">Logout</a>
+    <% } %>
+  </nav>
+</body>
+</html>
