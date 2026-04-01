@@ -2,6 +2,7 @@ const express = require("express");
 
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authroutes");
+const adminRoutes = require("./routes/adminroutes");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use("/", authRoutes);
+app.use("/admin", adminRoutes);
 
 // Server
 app.listen(5000, () => {

@@ -1,5 +1,52 @@
-<h2>Admin Dashboard</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Admin</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
 
-<a href="/admin/add-book">Add Book</a><br><br>
-<a href="/admin/books">Manage Books</a><br><br>
-<a href="/">Logout</a>
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <h2>📚 Library Admin</h2>
+    <ul>
+      <li><a href="/admin/dashboard" class="active">Dashboard</a></li>
+      <li><a href="/admin/books">Books</a></li>
+      <li><a href="/admin/users">Users</a></li>
+      <li><a href="/admin/issue">Issue Book</a></li>
+      <li><a href="/admin/return">Return Book</a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Books</h3>
+        <p><%= stats.totalBooks %></p>
+      </div>
+
+      <div class="card">
+        <h3>Total Users</h3>
+        <p><%= stats.totalUsers %></p>
+      </div>
+
+      <div class="card">
+        <h3>Issued Books</h3>
+        <p><%= stats.issuedBooks %></p>
+      </div>
+
+      <div class="card">
+        <h3>Returned Books</h3>
+        <p><%= stats.returnedBooks %></p>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

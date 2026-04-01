@@ -88,4 +88,79 @@ body {
     margin: 50px auto;
     text-align: center;
 }
-   
+   /*admin dashboard*/
+   body {
+  font-family: 'Poppins', sans-serif;
+  background: #f8fafc;
+}
+
+.dashboard {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 18px 0;
+}
+
+.sidebar ul li a {
+  color: #cbd5f5;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  color: #38bdf8;
+}
+
+/* Main */
+.main-content {
+  flex: 1;
+  padding: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #64748b;
+}
+
+.card p {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0f172a;
+}
