@@ -126,3 +126,78 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
+/* Only apply styles on Manage Books page */
+body.manage-books-page {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+body.manage-books-page h2 {
+  text-align: center;
+  color: #333;
+}
+
+body.manage-books-page ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body.manage-books-page li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+body.manage-books-page li:last-child {
+  border-bottom: none;
+}
+
+body.manage-books-page .book-info {
+  flex-grow: 1;
+}
+
+body.manage-books-page button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+body.manage-books-page .delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+body.manage-books-page .delete-btn:hover {
+  background-color: #c0392b;
+}
+
+body.manage-books-page .edit-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+body.manage-books-page .edit-btn:hover {
+  background-color: #2980b9;
+}
+
+body.manage-books-page .back-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #3498db;
+  text-decoration: none;
+}
+
+body.manage-books-page .back-link:hover {
+  text-decoration: underline;
+}

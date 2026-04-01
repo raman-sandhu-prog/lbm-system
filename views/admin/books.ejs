@@ -1,14 +1,25 @@
-<h2>Manage Books</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Books</title>
+ <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="manage-books-page">
+  <h2>Manage Books</h2>
 
-<ul>
-  <% books.forEach(book => { %>
-    <li>
-      <%= book.title %> - <%= book.author %>
-      <form action="/admin/delete/<%= book._id %>" method="POST" style="display:inline;">
-        <button>Delete</button>
-      </form>
-    </li>
-  <% }) %>
-</ul>
+  <ul>
+    <% books.forEach(book => { %>
+      <li>
+        <span class="book-info"><%= book.title %> - <%= book.author %></span>
+        <form action="/admin/delete/<%= book._id %>" method="POST" style="display:inline;">
+          <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this book?');">Delete</button>
+        </form>
+        <a href="/admin/edit/<%= book._id %>" class="edit-btn">Edit</a>
+      </li>
+    <% }) %>
+  </ul>
 
-<a href="/admin">Back</a>
+  <a href="/admin" class="back-link">Back</a>
+</body>
+</html>
