@@ -9,33 +9,33 @@
 <div class="container">
   <h2>Register</h2>
 
-  <% if (typeof error !== 'undefined') { %>
+  <% if (error) { %>
     <p style="color:red;"><%= error %></p>
   <% } %>
 
   <form action="/register" method="POST">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="name" placeholder="Full Name"
+           value="<%= name %>" required>
 
-    <input type="password" id="password" name="password" placeholder="Password (min 6 chars)" required>
-    <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+    <input type="email" name="email" placeholder="Email"
+           value="<%= email %>" required>
 
-    <label>
-      <input type="checkbox" onclick="togglePassword()"> Show Password
-    </label>
+    <% if (!otpSent) { %>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+    <% } %>
 
-    <button type="submit">Register</button>
+    <% if (otpSent) { %>
+      <input type="text" name="otp" placeholder="Enter OTP" required>
+    <% } %>
+
+    <button type="submit">
+      <% if (otpSent) { %>Verify OTP<% } else { %>Register<% } %>
+    </button>
   </form>
 
   <p>Already have an account? <a href="/login">Login</a></p>
 </div>
-
-<script>
-function togglePassword() {
-  const pass = document.getElementById("password");
-  pass.type = pass.type === "password" ? "text" : "password";
-}
-</script>
 
 </body>
 </html>

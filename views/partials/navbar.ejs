@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="/">📚 LibraryMS</a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <% if (typeof user === 'undefined' || !user) { %>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register" class="btn">Register</a>
+
+      <% } else if (user.role === "student") { %>
+        <a href="/student/dashboard">Dashboard</a>
+        <a href="/student/books">Browse Books</a>
+        <a href="/student/issued-books">My Issued Books</a>
+        <a href="/logout" class="btn logout">Logout</a>
+
+      <% } else if (user.role === "admin") { %>
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/add-book">Add Book</a>
+        <a href="/admin/manage-books">Manage Books</a>
+        <a href="/admin/issued-books">Issued Books</a>
+        <a href="/logout" class="btn logout">Logout</a>
+      <% } %>
+    </div>
+  </div>
+</nav>
