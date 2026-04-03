@@ -1,6 +1,5 @@
 exports.getDashboard = async (req, res) => {
   try {
-    // Replace with MongoDB queries later
     const stats = {
       totalBooks: 320,
       totalUsers: 150,
@@ -8,7 +7,7 @@ exports.getDashboard = async (req, res) => {
       returnedBooks: 275
     };
 
-    res.render("admin/dashboard", { stats });
+   res.render("admin/dashboard", { user: req.user,stats  });
 
 
   } catch (error) {
@@ -27,7 +26,7 @@ const books = [
 ];
 
 exports.listBooks = (req, res) => {
-  res.render('admin/books', { books });
+  res.render('admin/books', { user: req.user,books });
 };
 exports.addBookForm = (req, res) => {
   res.render('admin/add-book');
@@ -37,5 +36,5 @@ exports.addBookForm = (req, res) => {
 exports.editBookForm = (req, res) => {
   const bookId = parseInt(req.params.id);
   const book = books.find(b => b.id === bookId);
-  res.render('admin/edit-book', { book });
+  res.render('admin/edit-book', { user: req.user,book });
 };

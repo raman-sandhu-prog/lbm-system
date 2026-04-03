@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authController = require("../controllers/authcontroller");
+const { authController } = require("../controllers");
 const session = require("express-session");
 
 router.get("/",authController.gethome);
