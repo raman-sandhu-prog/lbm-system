@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
+const userValidation=require("../validations/userValidation")
 exports.gethome=(req,res)=>{
   res.render("home");
 }
@@ -121,29 +122,61 @@ exports.getLogin = (req, res) => {
   res.render("login");
 };
 
+// exports.postLogin = async (req, res) => {
+  // try {
+//     const { email, password } = req.body;
+
+//     const user = await User.findOne({ email });
+//     if (!user) return res.send("User not found");
+
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) return res.send("Invalid password");
+
+//     req.session.user = user;
+
+//     if (user.role === "admin") {
+//       res.redirect("/admin");
+//     } else {
+//       res.redirect("/student");
+//     }
+
+//   } catch (error) {
+//     res.send("Login error");
+//   }
+// };
+
+
 exports.postLogin = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const validatedData = await userValidation.validate(req.body,{abortEarly:false});
+    const { email, password } = validatedData;
 
     const user = await User.findOne({ email });
-    if (!user) return res.send("User not found");
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.send("Invalid password");
-
+    if (!isMatch) {
+      return res.status(401).send("Invalid password");
+    }
     req.session.user = user;
-
     if (user.role === "admin") {
-      res.redirect("/admin");
+      return res.redirect("/admin");
     } else {
-      res.redirect("/student");
+      return res.redirect("/student");
     }
 
   } catch (error) {
-    res.send("Login error");
-  }
-};
+    if (error.name === "ValidationError") {
+      return res.status(400).json({ errors: error.errors });
+    }
 
+   
+    console.error(error);
+    return res.status(500).send("Login error");
+  }
+}; 
 exports.logout = (req, res) => {
   req.session.destroy();
   res.redirect("/login");

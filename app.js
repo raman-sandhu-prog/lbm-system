@@ -3,6 +3,7 @@ const express = require("express");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authroutes");
 const adminRoutes = require("./routes/adminroutes");
+const studentRoutes=require("./routes/studentroutes")
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", authRoutes);
 app.use("/admin", adminRoutes);
+app.use('/student', studentRoutes);
 
 // Server
 app.listen(5000, () => {
